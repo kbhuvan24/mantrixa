@@ -285,7 +285,7 @@ const Home = () => {
             <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '60%', height: 1, background: 'linear-gradient(90deg, transparent, var(--accent-green), transparent)' }} />
             <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.6rem)', letterSpacing: '-0.02em', marginBottom: 'clamp(12px, 3vw, 16px)' }}>Start your journey with Mantrixa today</h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: 500, margin: '0 auto clamp(24px, 6vw, 36px)', lineHeight: 1.7, fontSize: 'clamp(14px, 2vw, 16px)' }}>
-              Join 600+ students transforming foundational knowledge into real-world engineering skills — guided by engineers who live and breathe it every day.
+              Join 500+ students transforming foundational knowledge into real-world engineering skills — guided by engineers who live and breathe it every day.
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'clamp(12px, 3vw, 16px)', justifyContent: 'center' }}>
               <Link to="/auth?mode=register" className="btn btn-primary" style={{ fontSize: 'clamp(14px, 2vw, 16px)', padding: 'clamp(12px, 3vw, 14px) clamp(20px, 4vw, 32px)' }}>Get Started — Free Registration</Link>
