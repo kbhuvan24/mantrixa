@@ -4,14 +4,14 @@
 
 export const ADMIN_CREDENTIALS = {
   email: process.env.REACT_APP_ADMIN_EMAIL || 'admin@mantrixa.dev',
-  password: process.env.REACT_APP_ADMIN_PASSWORD || '',
+  password: process.env.REACT_APP_ADMIN_PASSWORD || 'Bhuvan@1968',
   name: 'Admin',
   role: 'admin',
 };
 
 export const COADMIN_CREDENTIALS = {
   email: process.env.REACT_APP_COADMIN_EMAIL || 'coadmin@mantrixa.dev',
-  password: process.env.REACT_APP_COADMIN_PASSWORD || '',
+  password: process.env.REACT_APP_COADMIN_PASSWORD || 'Tarun@2000',
   name: process.env.REACT_APP_COADMIN_NAME || 'Co-Admin',
   role: 'coadmin',
 };

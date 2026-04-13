@@ -21,7 +21,7 @@ const buildQrUrl = (upiLink) =>
   `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiLink)}`;
 
 const PaymentModal = ({ course, onClose, onSuccess }) => {
-  const { recordPendingPayment, enrollCourse, user } = useAuth();
+  const { recordPendingPayment, user } = useAuth();
   const { toast } = useToast();
   const [step, setStep] = useState('info'); // info | pay | confirm | done
   const [upiRef, setUpiRef] = useState('');
