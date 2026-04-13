@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
-  const { user, logout, isAdmin } = useAuth();
+  const { user, logout, isPrivileged } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
@@ -19,6 +19,8 @@ const Navbar = () => {
 
   const handleLogout = () => { logout(); navigate('/'); };
   const isActive = (path) => location.pathname === path;
+
+  const roleColor = user?.role === 'admin' ? 'var(--accent-orange)' : user?.role === 'coadmin' ? 'var(--accent-cyan)' : 'var(--accent-green)';
 
   return (
     <nav style={{
@@ -63,13 +65,15 @@ const Navbar = () => {
             onMouseLeave={e => { if (!isActive(path)) e.currentTarget.style.color = 'var(--text-secondary)'; }}
             >{label}</Link>
           ))}
-          {isAdmin && (
+          {isPrivileged && (
             <Link to="/admin" style={{
               padding: '8px 16px', borderRadius: 8, fontSize: 14, fontWeight: 500,
-              color: isActive('/admin') ? 'var(--accent-orange)' : 'var(--text-secondary)',
-              background: isActive('/admin') ? 'rgba(255,107,53,0.1)' : 'transparent',
+              color: isActive('/admin') ? roleColor : 'var(--text-secondary)',
+              background: isActive('/admin') ? `${roleColor}15` : 'transparent',
               transition: 'all 0.2s', textDecoration: 'none'
-            }}>Admin Panel</Link>
+            }}>
+              {user?.role === 'coadmin' ? 'Co-Admin Panel' : 'Admin Panel'}
+            </Link>
           )}
         </div>
 
@@ -77,7 +81,7 @@ const Navbar = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           {user ? (
             <>
-              {!isAdmin && (
+              {!isPrivileged && (
                 <Link to="/dashboard" className="btn btn-secondary" style={{ padding: '9px 18px', fontSize: 14 }}>
                   Dashboard
                 </Link>
@@ -85,7 +89,7 @@ const Navbar = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, var(--accent-green), var(--accent-cyan))',
+                  background: `linear-gradient(135deg, ${roleColor}, var(--accent-cyan))`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 14, fontWeight: 700, color: '#0a0a0f'
                 }}>
@@ -124,6 +128,8 @@ const Navbar = () => {
           {[{ path: '/', label: 'Home' }, { path: '/learning-hub', label: 'Learning Hub' }, { path: '/about', label: 'About Us' }].map(({ path, label }) => (
             <Link key={path} to={path} style={{ padding: '12px 16px', color: 'var(--text-primary)', borderRadius: 8, display: 'block' }}>{label}</Link>
           ))}
+          {isPrivileged && <Link to="/admin" style={{ padding: '12px 16px', color: roleColor, borderRadius: 8, display: 'block' }}>Admin Panel</Link>}
+          {user && !isPrivileged && <Link to="/dashboard" style={{ padding: '12px 16px', color: 'var(--accent-green)', borderRadius: 8, display: 'block' }}>Dashboard</Link>}
         </div>
       )}
 

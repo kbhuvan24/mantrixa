@@ -33,6 +33,7 @@ function App() {
                   <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                   <Route path="/exam-panel" element={<ProtectedRoute><ExamPanel /></ProtectedRoute>} />
                   <Route path="/interview-panel" element={<ProtectedRoute><InterviewPanel /></ProtectedRoute>} />
+                  {/* Both admin and co-admin can access /admin */}
                   <Route path="/admin" element={<ProtectedRoute adminOnly><AdminPanel /></ProtectedRoute>} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
