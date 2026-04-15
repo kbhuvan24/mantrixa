@@ -65,7 +65,7 @@ npm run build
 4. Done! The GitHub Actions workflow (`.github/workflows/deploy.yml`) handles everything automatically.
 
 ### Auto-deploy triggers:
-- ✅ Direct push to `main`
+- ✅ Don't do Direct push to `main`
 - ✅ Merging any PR into `main`
 
 ---
