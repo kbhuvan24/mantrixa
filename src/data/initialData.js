@@ -1,7 +1,30 @@
 // Mantrixa — Initial Data
+// Credentials are loaded from environment variables (.env file).
+// Never hardcode passwords here.
+
 export const ADMIN_CREDENTIALS = {
-  email: 'admin@mantrixa.dev',
-  password: 'MantrixaAdmin@2024'
+  email: process.env.REACT_APP_ADMIN_EMAIL || 'admin@mantrixa.dev',
+  password: process.env.REACT_APP_ADMIN_PASSWORD || 'Bhuvan@1968',
+  name: 'Admin',
+  role: 'admin',
+};
+
+export const COADMIN_CREDENTIALS = {
+  email: process.env.REACT_APP_COADMIN_EMAIL || 'coadmin@mantrixa.dev',
+  password: process.env.REACT_APP_COADMIN_PASSWORD || 'Tarun@2000',
+  name: process.env.REACT_APP_COADMIN_NAME || 'Co-Admin',
+  role: 'coadmin',
+};
+
+export const PAYMENT_CONFIG = {
+  upiId: process.env.REACT_APP_UPI_ID || 'mantrixa@upi',
+  upiName: process.env.REACT_APP_UPI_NAME || 'Mantrixa',
+};
+
+export const EMAILJS_CONFIG = {
+  serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID || '',
+  templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '',
+  publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '',
 };
 
 export const INITIAL_COURSES = [
@@ -301,3 +324,22 @@ export const INTERVIEW_QUESTIONS = {
     'How do you optimise a React app that is rendering slowly?'
   ]
 };
+
+// ── JSON Bulk Import Schema (for admin reference) ──────────────────────────
+// Upload a .json file with this structure to bulk-import exams:
+//
+// {
+//   "courseId": "devops-fundamentals",
+//   "title": "Exam Title",
+//   "duration": 30,
+//   "passingScore": 70,
+//   "questions": [
+//     {
+//       "question": "What is X?",
+//       "options": ["A", "B", "C", "D"],
+//       "correct": 0
+//     }
+//   ]
+// }
+//
+// Or an array of exam objects to import multiple at once.
